@@ -17,14 +17,6 @@ class User < ActiveRecord::Base
     self.friends.pluck(:name)
   end
 
-  def accept_friendship(friendship)
-    friendship.update(:accepted => true)
-  end
-
-  def decline_friendship(friendship)
-    friendship.destroy
-  end
-
   def confirmed_friendship?(friendship)
     friendship.accepted? && friendship.inverse_friendship.accepted?
     # friendship.friend.friendships.where(:friend => self).accepted?
