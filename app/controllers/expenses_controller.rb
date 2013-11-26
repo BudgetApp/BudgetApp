@@ -5,9 +5,18 @@ class ExpensesController < ApplicationController
   end
 
   def create
-    expense_params[:amount]
-    @expense = Expense.new(expense_params)
-    if @expense.save
+
+    temp_expense_params = expense_params
+    dollars = temp_expense_params[:amount].scan(/^(\d+)(\.\d{2})?$/).flatten.join
+    
+    if !dollars.empty?
+      temp_expense_params.merge!(:amount => (dollars.to_f * 100).to_i)
+    else
+      flash[:notice] = "Please enter expense amount in the following format: 10.25"
+    end
+
+    @expense = current_user.expenses.build(temp_expense_params)
+    if !dollars.empty? && @expense.save
       redirect_to current_user, notice: "Expense was successfully added."
     else
       render action: 'new'

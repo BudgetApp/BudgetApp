@@ -1,8 +1,12 @@
 <%= @user.name %><br>
 <%= @user.email %><br>
-<% @user.expenses.each do |expense| %>
-  <%= expense.amount %>
-  <%= expense.category %>
+<% if !@user.expenses.empty? %>
+  <ul>
+    <% @user.expenses.each do |expense| %>
+      <li><%= number_to_currency(expense.amount.to_f/100) %> - <%= expense.category.title %></li>
+    <% end %>
+  </ul>
 <% end %>
 <br>
+<%= link_to "add new expense", new_expense_path %>
 <%= link_to "sign out", sign_out_path, method: :delete %>
