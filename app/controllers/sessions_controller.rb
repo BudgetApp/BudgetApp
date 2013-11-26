@@ -2,7 +2,8 @@ class SessionsController < ApplicationController
   skip_before_action :signed_in_user, only: [:create, :destroy]
 
   def create
-    @user = User.find_or_initialize_by(provider: auth_hash.provider, uid: auth_hash.uid)
+    raise
+    @user = User.find_or_initialize_by(provider: auth_hash.provider, uid: auth_hash.uid, username: auth_hash.extra.raw_info.username)
     @user.info = auth_hash.info.to_hash
     @user.name = auth_hash.info.name
     if @user.new_record? && auth_hash.info.email

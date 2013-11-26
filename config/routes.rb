@@ -11,6 +11,8 @@ BudgetApp::Application.routes.draw do
   get '/auth/facebook', :as => 'facebook_login'
   delete '/sign-out' => 'sessions#destroy', :as => 'sign_out'
 
+  get '/user/:id/add-friends' => 'users#add_friends', :as => 'add_friends'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

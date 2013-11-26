@@ -6,10 +6,14 @@ class User < ActiveRecord::Base
   #   :foreign_key => 'friend_id'
   # has_many :inverse_friends, :through => :inverse_friendships, :source => :user
 
+  # Pending Friendships method invitations + requests
+  # Destroying leftover friendships
   has_many :expenses
   has_many :categories, :through => :expenses
 
   before_create :create_remember_token
+
+  ### Session Methods ###
 
   def self.new_remember_token
     SecureRandom.urlsafe_base64
@@ -56,6 +60,13 @@ class User < ActiveRecord::Base
     self.friendships.select{|f| pending_friendship_request?(f)}
   end
 
+  # Returns an array of Facebook friends that also use the app
+  def facebook_friends
+    friends = GRAPH.get_connections(self.uid, "friends")
+    friend_ids = friends.map {|f| f["id"]}
+    User.where(uid: friend_ids) - self.friends
+  end
+
   ### Expense Data Methods ###
 
   def last_week_expenses
@@ -80,6 +91,12 @@ class User < ActiveRecord::Base
 
   def last_monthly_weekend_expenses
     self.last_month_expenses.select {|e| e.created_at.saturday? || e.created_at.sunday?}
+  end
+
+  ### Helpful Methods ###
+
+  def to_param
+    self.username
   end
 
 private 

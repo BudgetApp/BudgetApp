@@ -1,0 +1,1 @@
+GRAPH = Koala::Facebook::API.new("361461920656966|G_MgN17IQ-gTc4jBekWpCFFs_G4")

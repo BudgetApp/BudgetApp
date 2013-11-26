@@ -5,6 +5,9 @@ class UsersController < ApplicationController
   def show
   end
 
+  def add_friends
+  end
+
   private
   def set_user
     @user = current_user

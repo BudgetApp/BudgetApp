@@ -61,3 +61,4 @@ end
 gem 'chronic'
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'koala'

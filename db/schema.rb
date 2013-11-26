@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131126170234) do
+ActiveRecord::Schema.define(version: 20131126192610) do
 
   create_table "categories", force: true do |t|
     t.string   "title"
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 20131126170234) do
     t.string   "provider"
     t.string   "uid"
     t.string   "info"
+    t.string   "username"
   end
 
 end
