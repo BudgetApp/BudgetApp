@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
   has_many :expenses
   has_many :categories, :through => :expenses
 
+  ### Friendship Methods ###
+
   def add_friend(friend)
     self.friendships.create(:friend => friend, :accepted => true)
     friend.friendships.create(:friend => self, :accepted => false)
@@ -19,12 +21,9 @@ class User < ActiveRecord::Base
 
   def confirmed_friendship?(friendship)
     friendship.accepted? && friendship.inverse_friendship.accepted?
-    # friendship.friend.friendships.where(:friend => self).accepted?
   end
 
   def get_friendships
-    # Rewrite confirmed_friendship? and get_friendships
-    # to only ask DB for specific friendships by ID
     self.friendships.select{|f| confirmed_friendship?(f)}
   end
 
@@ -44,6 +43,32 @@ class User < ActiveRecord::Base
   # Friendhip requests that a user hasn't accepted or declined
   def pending_friendship_requests
     self.friendships.select{|f| pending_friendship_request?(f)}
+  end
+
+  ### Expense Data Methods ###
+
+  def last_week_expenses
+    self.expenses.where("created_at >= ?", Chronic.parse("one week ago"))
+  end
+
+  def last_month_expenses
+    self.expenses.where("created_at >= ?", Chronic.parse("one month ago"))
+  end
+
+  def last_weekend_expenses
+    self.expenses.where("created_at BETWEEN ? AND ?", Chronic.parse("last saturday"), Chronic.parse("last monday"))
+  end
+
+  def last_weekday_expenses
+    self.last_week_expenses - self.last_weekend_expenses
+  end
+
+  def last_monthly_weekday_expenses
+    self.last_month_expenses - self.last_monthly_weekend_expenses
+  end
+
+  def last_monthly_weekend_expenses
+    self.last_month_expenses.select {|e| e.created_at.saturday? || e.created_at.sunday?}
   end
 
 end
