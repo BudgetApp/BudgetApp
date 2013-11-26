@@ -11,7 +11,7 @@ BudgetApp::Application.routes.draw do
   get '/auth/facebook', :as => 'facebook_login'
   delete '/sign-out' => 'sessions#destroy', :as => 'sign_out'
 
-  get '/user/:id/add-friends' => 'users#add_friends', :as => 'add_friends'
+  get '/users/:id/add-friends' => 'users#add_friends', :as => 'add_friends', :id => /([^\/])+?/
 
   post '/new-friendship' => 'friendships#new', :as => 'new_friendship'
   post '/accept-friendship' => 'friendships#accept', :as => 'accept_friendship'
