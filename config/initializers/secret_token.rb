@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-BudgetApp::Application.config.secret_key_base = 'ba7dc4c53f54f32948227447232baaa32b23213a34d5dd54405081a178296d865f4c997bd673ada314d96e39df4502859cdde95b4a7561679bfc7fa2f7fc783c'
+BudgetApp::Application.config.secret_key_base = ENV['APPLICATION_SECRET_KEY_BASE']

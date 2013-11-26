@@ -8,6 +8,16 @@ class User < ActiveRecord::Base
   has_many :expenses
   has_many :categories, :through => :expenses
 
+  before_create :create_remember_token
+
+  def self.new_remember_token
+    SecureRandom.urlsafe_base64
+  end
+
+  def self.encrypt(token)
+    Digest::SHA1.hexdigest(token.to_s)
+  end
+
   ### Friendship Methods ###
 
   def add_friend(friend)
@@ -71,4 +81,8 @@ class User < ActiveRecord::Base
     self.last_month_expenses.select {|e| e.created_at.saturday? || e.created_at.sunday?}
   end
 
+private 
+  def create_remember_token
+    self.remember_token = User.encrypt(User.new_remember_token)
+  end
 end
