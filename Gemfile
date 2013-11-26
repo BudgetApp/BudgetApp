@@ -59,3 +59,5 @@ group :test, :development do
 end
 
 gem 'chronic'
+gem 'omniauth'
+gem 'omniauth-facebook'
