@@ -12,6 +12,16 @@
 <% @user.confirmed_friends.each do |friend| %>
   <%= friend.name %>
 <% end %>
+
+<h1>Pending Friend Requests</h1>
+<% @user.pending_friendship_requests.each do |request| %>
+  <%= request.friend.name %>
+  <%= form_tag('/accept-friendship', method: :post) do %>
+    <%= hidden_field_tag 'friendship[id]', request.id %>
+    <%= submit_tag "accept" %>
+  <% end %>
+<% end %>
+
 <%= link_to "add new expense", new_expense_path %>
 <%= link_to "sign out", sign_out_path, method: :delete %>
 <%= link_to "add friends", add_friends_path %>

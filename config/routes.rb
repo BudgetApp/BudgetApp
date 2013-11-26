@@ -14,6 +14,7 @@ BudgetApp::Application.routes.draw do
   get '/user/:id/add-friends' => 'users#add_friends', :as => 'add_friends'
 
   post '/new-friendship' => 'friendships#new', :as => 'new_friendship'
+  post '/accept-friendship' => 'friendships#accept', :as => 'accept_friendship'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
