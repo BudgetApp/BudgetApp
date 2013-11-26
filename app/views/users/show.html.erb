@@ -8,6 +8,10 @@
   </ul>
 <% end %>
 <br>
+<h1>Friends</h1>
+<% @user.confirmed_friends.each do |friend| %>
+  <%= friend.name %>
+<% end %>
 <%= link_to "add new expense", new_expense_path %>
 <%= link_to "sign out", sign_out_path, method: :delete %>
 <%= link_to "add friends", add_friends_path %>

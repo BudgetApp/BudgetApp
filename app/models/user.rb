@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   # Destroying leftover friendships
   has_many :expenses
   has_many :categories, :through => :expenses
+  validates_uniqueness_of :username
 
   before_create :create_remember_token
 
@@ -26,12 +27,9 @@ class User < ActiveRecord::Base
   ### Friendship Methods ###
 
   def add_friend(friend)
+    return if self.friends.include?(friend)
     self.friendships.create(:friend => friend, :accepted => true)
     friend.friendships.create(:friend => self, :accepted => false)
-  end
-
-  def friend_names
-    self.friends.pluck(:name)
   end
 
   def confirmed_friendship?(friendship)
@@ -40,6 +38,10 @@ class User < ActiveRecord::Base
 
   def get_friendships
     self.friendships.select{|f| confirmed_friendship?(f)}
+  end
+
+  def confirmed_friends
+    self.get_friendships.map {|f| f.friend}
   end
 
   def pending_friendship_invitation?(friendship)

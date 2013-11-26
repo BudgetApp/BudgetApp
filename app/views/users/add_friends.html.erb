@@ -1,0 +1,7 @@
+<% @user.facebook_friends.each do |friend| %>
+  <%= friend.name %>
+  <%= form_tag('/new-friendship', method: :post) do %>
+    <%= hidden_field_tag 'friendship[id]', friend.id %>
+    <%= submit_tag "add" %>
+  <% end %>
+<% end %>
