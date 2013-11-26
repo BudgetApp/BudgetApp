@@ -3,7 +3,13 @@ BudgetApp::Application.routes.draw do
 
   resources :expenses
 
-  resources :users
+  get '/users/:id/feed' => 'users#feed', :as => 'feed', :id => /([^\/])+?/
+
+  get '/users/:id' => 'users#show', :as => 'user', :id => /([^\/])+?/
+  # patch '/users/:id' => 'users#update', :as => 'user', :id => /([^\/])+?/
+  # put '/users/:id' => 'users#update', :as => 'user', :id => /([^\/])+?/
+  # delete '/users/:id' => 'users#destroy', :as => 'user', :id => /([^\/])+?/
+
 
   root 'static_pages#index'
 

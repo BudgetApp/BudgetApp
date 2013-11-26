@@ -1,0 +1,6 @@
+<h1><%=@user.name%>'s Friends Expenses:</h1>
+<% @user.get_friend_expenses.each do |expense| %><br>
+  <strong><%= expense.user.name %></strong> |
+  <%= number_to_currency(expense.amount.to_f/100) %> |
+  <%= expense.category.title %>
+<% end %>

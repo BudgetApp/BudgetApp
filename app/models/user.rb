@@ -95,6 +95,15 @@ class User < ActiveRecord::Base
     self.last_month_expenses.select {|e| e.created_at.saturday? || e.created_at.sunday?}
   end
 
+  ### Friend Feed Methods ###
+
+  def get_friend_expenses
+    self.confirmed_friends.map do |friend|
+      friend.expenses
+    end.flatten.sort_by{|e| e.created_at}.reverse
+  end
+
+
   ### Helpful Methods ###
 
   def to_param
