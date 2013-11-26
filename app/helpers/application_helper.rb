@@ -35,7 +35,7 @@ module ApplicationHelper
   def requested_url
     url = cookies.signed[:requested_url]
     cookies.delete(:requested_url)
-    url || user_path
+    url || user_path(current_user)
   end
 
 end

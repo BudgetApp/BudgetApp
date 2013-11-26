@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  skip_before_action :signed_in_account, :only [:create, :destroy]
+  skip_before_action :signed_in_user, only: [:create, :destroy]
 
   def create
     @user = User.find_or_initialize_by(provider: auth_hash.provider, uid: auth_hash.uid)

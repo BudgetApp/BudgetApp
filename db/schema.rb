@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131125201321) do
+ActiveRecord::Schema.define(version: 20131126170234) do
 
   create_table "categories", force: true do |t|
     t.string   "title"
@@ -42,6 +42,10 @@ ActiveRecord::Schema.define(version: 20131125201321) do
     t.string   "facebook_token"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "remember_token"
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "info"
   end
 
 end
