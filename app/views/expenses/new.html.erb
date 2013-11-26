@@ -1,0 +1,5 @@
+<%= form_for @expense do |f| %>
+$<%= f.text_field :amount, :placeholder => "11.25" %>
+<%= f.select('category_id', Category.all.collect {|c| [c.title, c.id]}) %>
+<%= f.submit %>
+<% end %>

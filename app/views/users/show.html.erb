@@ -1,4 +1,8 @@
-<%= @user.name %>
-<%= @user.email %>
-
+<%= @user.name %><br>
+<%= @user.email %><br>
+<% @user.expenses.each do |expense| %>
+  <%= expense.amount %>
+  <%= expense.category %>
+<% end %>
+<br>
 <%= link_to "sign out", sign_out_path, method: :delete %>
