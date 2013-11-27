@@ -1,7 +1,6 @@
 class User < ActiveRecord::Base
   has_many :friendships
   has_many :friends, :through => :friendships
-  has_many :votes
   serialize :info
   # has_many :inverse_friendships, :class_name => 'Friendship',
   #   :foreign_key => 'friend_id'
@@ -11,6 +10,7 @@ class User < ActiveRecord::Base
   # Destroying leftover friendships
   has_many :expenses
   has_many :categories, :through => :expenses
+  has_many :votes
   validates_uniqueness_of :username
 
   before_create :create_remember_token
