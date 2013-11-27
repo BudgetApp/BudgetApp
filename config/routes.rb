@@ -1,4 +1,6 @@
 BudgetApp::Application.routes.draw do
+  resources :votes
+
   resources :categories
 
   resources :expenses
