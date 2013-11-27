@@ -12,6 +12,8 @@ BudgetApp::Application.routes.draw do
 
 
   root 'static_pages#index'
+  get '/about' => 'static_pages#about'
+  get '/contact' => 'static_pages#contact'
 
   get '/auth/facebook/callback' => 'sessions#create'
   get '/auth/facebook', :as => 'facebook_login'

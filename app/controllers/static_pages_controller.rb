@@ -4,4 +4,10 @@ class StaticPagesController < ApplicationController
   def index
     redirect_to user_url(current_user) if signed_in?
   end
+
+  def about
+  end
+
+  def contact
+  end
 end
