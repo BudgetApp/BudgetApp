@@ -7,6 +7,7 @@ function upvoteExpense(expense_id){
   var data = {"expense_id":expense_id}
   $.post('/users_upvote_expense', data, function(json){
       $('#upvotecountspan'+expense_id.toString()).html(json.upvote_count);
+      $('#downvotecountspan'+expense_id.toString()).html(json.downvote_count);
     })
 }
 
@@ -21,6 +22,7 @@ function downvoteExpense(expense_id){
   var data = {"expense_id":expense_id}
   $.post('/users_downvote_expense', data, function(json){
       $('#downvotecountspan'+expense_id.toString()).html(json.downvote_count);
+      $('#upvotecountspan'+expense_id.toString()).html(json.upvote_count);
     })
 }
 
