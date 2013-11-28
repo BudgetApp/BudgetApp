@@ -12,21 +12,18 @@ class UsersController < ApplicationController
   end
 
   def upvote_expense
-    expense_id = params["expense_id"]
-    expense = Expense.find(expense_id)
-    new_vote = expense.votes.find_or_create_by(user_id: @user.id)
-    new_vote.vote_direction = true
-    new_vote.save
-    new_upvote_count = expense.votes.where(:vote_direction => true).count
-    new_downvote_count = expense.votes.where(:vote_direction => false).count
-    render :json => {:upvote_count => new_upvote_count, :downvote_count => new_downvote_count}
+    vote_expense(true)
   end
 
   def downvote_expense
+    vote_expense(false)
+  end
+
+  def vote_expense(vote_direction)
     expense_id = params["expense_id"]
     expense = Expense.find(expense_id)
     new_vote = expense.votes.find_or_create_by(user_id: @user.id) 
-    new_vote.vote_direction = false
+    new_vote.vote_direction = vote_direction
     new_vote.save
     new_downvote_count = expense.votes.where(:vote_direction => false).count
     new_upvote_count = expense.votes.where(:vote_direction => true).count
