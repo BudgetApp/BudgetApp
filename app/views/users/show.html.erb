@@ -3,7 +3,8 @@
 <% if !@user.expenses.empty? %>
   <ul>
     <% @user.expenses.each do |expense| %>
-      <li><%= number_to_currency(expense.amount.to_f/100) %> - <%= expense.category.title %></li>
+      <li><%= number_to_currency(expense.amount.to_f/100) %> | <%= expense.category.title %>
+      </li>
     <% end %>
   </ul>
 <% end %>

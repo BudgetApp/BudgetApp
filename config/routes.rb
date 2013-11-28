@@ -12,6 +12,8 @@ BudgetApp::Application.routes.draw do
   # put '/users/:id' => 'users#update', :as => 'user', :id => /([^\/])+?/
   # delete '/users/:id' => 'users#destroy', :as => 'user', :id => /([^\/])+?/
 
+  post "users_upvote_expense" => "users#upvote_expense"
+  post "users_downvote_expense" => "users#downvote_expense"
 
   root 'static_pages#index'
   get '/about' => 'static_pages#about'
