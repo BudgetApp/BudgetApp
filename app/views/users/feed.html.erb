@@ -3,4 +3,14 @@
   <strong><%= expense.user.name %></strong> |
   <%= number_to_currency(expense.amount.to_f/100) %> |
   <%= expense.category.title %>
+  <div id="vote-button">
+      <span id="upvotecountspan<%=expense.id%>"><%= expense.votes.where(:vote_direction => true).count %></span> <%= expense.votes.where(:vote_direction => true).count == 1 ? "upvote" : "upvotes" %> | 
+      <button type="button" class="upvote" data-expense-id="<%= expense.id %>">
+        <span class="glyphicon glyphicon-arrow-up"></span>
+      </button>
+      <span id="downvotecountspan<%=expense.id%>"><%= expense.votes.where(:vote_direction => false).count %></span> <%= expense.votes.where(:vote_direction => false).count == 1 ? "downvote" : "downvotes" %> | 
+      <button type="button" class="downvote" data-expense-id="<%= expense.id %>">
+        <span class="glyphicon glyphicon-arrow-down"></span>
+      </button>
+  </div>
 <% end %>

@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   # Destroying leftover friendships
   has_many :expenses
   has_many :categories, :through => :expenses
+  has_many :votes
   validates_uniqueness_of :username
 
   before_create :create_remember_token
