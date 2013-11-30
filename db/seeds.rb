@@ -23,7 +23,15 @@ Category.create!([
 
 Expense.create!([
   { :user_id => 2, :category_id => 3, :amount => 4050, :created_at => "2013-11-28 02:14:23", :updated_at => "2013-11-28 02:14:23" },
-  { :user_id => 2, :category_id => 13, :amount => 12000, :created_at => "2013-11-28 02:14:37", :updated_at => "2013-11-28 02:14:37" }
+  { :user_id => 2, :category_id => 13, :amount => 12000, :created_at => "2013-11-28 02:14:37", :updated_at => "2013-11-28 02:14:37" },
+  { :user_id => 2, :category_id => 7, :amount => 10000, :created_at => "2013-11-28 02:24:08", :updated_at => "2013-11-28 02:24:08" },
+  { :user_id => 2, :category_id => 5, :amount => 11200, :created_at => "2013-11-28 02:47:41", :updated_at => "2013-11-28 02:47:41" },
+  { :user_id => 2, :category_id => 4, :amount => 2050, :created_at => "2013-11-28 02:47:51", :updated_at => "2013-11-28 02:47:51" },
+  { :user_id => 2, :category_id => 8, :amount => 38500, :created_at => "2013-11-28 02:48:07", :updated_at => "2013-11-28 02:48:07" },
+  { :user_id => 2, :category_id => 6, :amount => 3245, :created_at => "2013-11-28 02:48:17", :updated_at => "2013-11-28 02:48:17" },
+  { :user_id => 2, :category_id => 4, :amount => 1632, :created_at => "2013-11-28 02:48:29", :updated_at => "2013-11-28 02:48:29" },
+  { :user_id => 2, :category_id => 3, :amount => 1898, :created_at => "2013-11-28 02:48:39", :updated_at => "2013-11-28 02:48:39" },
+  { :user_id => 2, :category_id => 2, :amount => 3367, :created_at => "2013-11-28 02:48:48", :updated_at => "2013-11-28 02:48:48" }
 ])
 
 
@@ -38,6 +46,14 @@ Friendship.create!([
 User.create!([
   { :name => "Amanda Himmelstoss", :email => "ahimmelstoss@gmail.com", :facebook_id => nil, :facebook_token => nil, :created_at => "2013-11-28 02:11:07", :updated_at => "2013-11-28 02:11:07", :remember_token => "e011b815fd1bd27ad806e70b8fba5bde9710f384", :provider => "facebook", :uid => "1343310232", :info => {"nickname"=>"ahimmelstoss", "email"=>"ahimmelstoss@gmail.com", "name"=>"Amanda Himmelstoss", "first_name"=>"Amanda", "last_name"=>"Himmelstoss", "image"=>"http://graph.facebook.com/1343310232/picture?type=square", "urls"=>{"Facebook"=>"https://www.facebook.com/ahimmelstoss"}, "location"=>"Brooklyn, New York", "verified"=>true}, :username => "ahimmelstoss" },
   { :name => "Alex Hioreanu", :email => "hioreanu@gmail.com", :facebook_id => nil, :facebook_token => nil, :created_at => "2013-11-28 02:13:32", :updated_at => "2013-11-28 02:13:32", :remember_token => "d2901c8cb0173a6f6ad9b220a1d439accf75965a", :provider => "facebook", :uid => "1536072019", :info => {"nickname"=>"hioreanu", "email"=>"hioreanu@gmail.com", "name"=>"Alex Hioreanu", "first_name"=>"Alex", "last_name"=>"Hioreanu", "image"=>"http://graph.facebook.com/1536072019/picture?type=square", "urls"=>{"Facebook"=>"https://www.facebook.com/hioreanu"}, "location"=>"Brooklyn, New York", "verified"=>true}, :username => "hioreanu" }
+])
+
+
+
+Vote.create!([
+  { :created_at => "2013-11-28 02:20:15", :updated_at => "2013-11-28 02:45:48", :vote_direction => true, :expense_id => 2, :user_id => 1 },
+  { :created_at => "2013-11-28 02:20:21", :updated_at => "2013-11-28 02:45:47", :vote_direction => false, :expense_id => 1, :user_id => 1 },
+  { :created_at => "2013-11-28 02:24:25", :updated_at => "2013-11-28 02:45:50", :vote_direction => false, :expense_id => 3, :user_id => 1 }
 ])
 
 
