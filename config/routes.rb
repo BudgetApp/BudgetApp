@@ -7,6 +7,8 @@ BudgetApp::Application.routes.draw do
 
   get '/users/:id/feed' => 'users#feed', :as => 'feed', :id => /([^\/])+?/
 
+  get '/users/:id/feed_sum' => 'users#feed_sum', :as => 'feed_sum', :id => /([^\/])+?/
+
   get '/users/:id' => 'users#show', :as => 'user', :id => /([^\/])+?/
   # patch '/users/:id' => 'users#update', :as => 'user', :id => /([^\/])+?/
   # put '/users/:id' => 'users#update', :as => 'user', :id => /([^\/])+?/

@@ -1,8 +1,18 @@
+include ActionView::Helpers::NumberHelper
+#is this to include number_to_currency in this controller; not best practices, but okay...
+
 class UsersController < ApplicationController
 
   before_action :set_user
 
   def feed
+  end
+
+  def feed_sum
+    num_expenses = @user.get_friend_expenses.each { |expense| expense }.count
+    expenses_sum = 0
+    @user.get_friend_expenses.each { |expense|expenses_sum += expense.amount.to_f/100 }
+    render :json => {:num_expenses => num_expenses, :expenses_sum => number_to_currency(expenses_sum)}
   end
 
   def show

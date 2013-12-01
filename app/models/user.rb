@@ -98,6 +98,7 @@ class User < ActiveRecord::Base
 
   ### Friend Feed Methods ###
 
+  #returns an array of expenses
   def get_friend_expenses
     self.confirmed_friends.map do |friend|
       friend.expenses
