@@ -1,3 +1,7 @@
+<script>
+var user = <%= @user.username %>;
+</script>
+
 <h1><%=@user.name%>'s Friends Expenses:</h1>
 <div class="feed">
 <% @user.get_friend_expenses.each do |expense| %><br>
