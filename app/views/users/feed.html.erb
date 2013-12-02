@@ -4,11 +4,11 @@ var user = <%= @user.username %>;
 
 <h1><%=@user.name%>'s Friends Expenses:</h1>
 <div class="feed">
-<% @user.get_friend_expenses.each do |expense| %><br>
-  <strong><%= expense.user.name %></strong> |
-  <%= number_to_currency(expense.amount.to_f/100) %> |
-  <%= expense.category.title %>
-  <div id="vote-button">
+  <% @user.get_friend_expenses.each do |expense| %><br>
+    <strong><%= expense.user.name %></strong> |
+    <%= number_to_currency(expense.amount.to_f/100) %> |
+    <%= expense.category.title %>
+    <div id="vote-button">
       <span id="upvotecountspan<%=expense.id%>"><%= expense.votes.where(:vote_direction => true).count %></span> <%= expense.votes.where(:vote_direction => true).count == 1 ? "upvote" : "upvotes" %> | 
       <button type="button" class="upvote" data-expense-id="<%= expense.id %>">
         <span class="glyphicon glyphicon-arrow-up"></span>
@@ -17,8 +17,8 @@ var user = <%= @user.username %>;
       <button type="button" class="downvote" data-expense-id="<%= expense.id %>">
         <span class="glyphicon glyphicon-arrow-down"></span>
       </button>
-  </div>
-<% end %>
+    </div>
+  <% end %>
 </div>
 <div id="sum">
 </div>

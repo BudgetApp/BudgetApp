@@ -13,8 +13,8 @@ $(function(){
   faye.subscribe('<%= FAYE_CHANNEL %>', function (data) {
     $.post('/confirm-hash-uid', {uid: data}, function(json){
       if (json.confirmation === true) {
-        $.get('/users/feed', {uid: data}, function(feed_data){
-          alert(feed_data.data.user);  
+        $.get('/users/live-feed', {uid: data}, function(){
+          addVoteButtonListeners();
         });
       };
     });

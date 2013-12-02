@@ -10,16 +10,20 @@ function voteExpense(expense_id, route){
     })
 }
 
+function addVoteButtonListeners(){
+  $("button.upvote").on("click", function(){
+    upvoteExpense($(this).data("expense-id"))
+  })
+
+  $("button.downvote").on("click", function(){
+    downvoteExpense($(this).data("expense-id"))
+  })
+}
+
 //upvote//
 function upvoteExpense(expense_id){
   voteExpense(expense_id, '/users_upvote_expense');
 }
-
-$(function(){
-  $("button.upvote").click(function(){
-    upvoteExpense($(this).data("expense-id"))
-  })
-})
 
 //downvote//
 function downvoteExpense(expense_id){
@@ -27,7 +31,5 @@ function downvoteExpense(expense_id){
 }
 
 $(function(){
-  $("button.downvote").click(function(){
-    downvoteExpense($(this).data("expense-id"))
-  })
+  addVoteButtonListeners();
 })

@@ -1,0 +1,1 @@
+$('.feed').prepend('<%= escape_javascript render(partial: "expense_with_buttons") %>')

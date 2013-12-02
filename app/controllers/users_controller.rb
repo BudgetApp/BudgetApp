@@ -6,26 +6,32 @@ class UsersController < ApplicationController
   before_action :set_user
 
   def feed
+  end
+
+  def live_feed
     # Later, we might want to return more info about the user in case we want to add profile pages
     if user = User.find_by(:hashed_uid => params[:uid])
-      user_name = user.name
-      expense = user.expenses.last
-      id = expense.id
-      amount = expense.amount
-      category = expense.category.title
-      upvotes = expense.votes.where(:vote_direction => true).count
-      downvotes = expense.votes.where(:vote_direction => false).count
+      @user_name = user.name
+      @expense = user.expenses.last
+      @id = @expense.id
+      @amount = @expense.amount
+      @category = @expense.category.title
+      @upvotes = @expense.votes.where(:vote_direction => true).count
+      @downvotes = @expense.votes.where(:vote_direction => false).count
 
-      json_data = {
-        id: id,
-        user: user_name,
-        amount: amount,
-        category: category,
-        upvotes: upvotes,
-        downvotes: downvotes
-      }
+      # json_data = {
+      #   id: @id,
+      #   user: @user_name,
+      #   amount: @amount,
+      #   category: @category,
+      #   upvotes: @upvotes,
+      #   downvotes: @downvotes
+      # }
 
-      render :json => { :data => json_data } 
+      respond_to do |format|
+        format.js { }
+      end
+      # render :json => { :data => json_data } 
     end
   end
 
