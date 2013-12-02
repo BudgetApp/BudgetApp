@@ -1,0 +1,18 @@
+<br>
+<div class="feed-item">
+  <%= hidden_field_tag("expense[created_at]", @created_at, class: "created-at")%>
+  <%= @id %>
+  <strong><%= @user_name %></strong> |
+  <%= number_to_currency(@amount.to_f/100) %> |
+  <%= @category %>
+  <div id="vote-button">
+    <span id="upvotecountspan<%= @id %>"><%= @upvotes %></span> <%= "upvote".pluralize(@upvotes) %> | 
+    <button type="button" class="upvote" data-expense-id="<%= @id %>">
+      <span class="glyphicon glyphicon-arrow-up"></span>
+    </button>
+    <span id="downvotecountspan<%= @id %>"><%= @downvotes %></span> <%= "downvote".pluralize(@downvotes) %> | 
+    <button type="button" class="downvote" data-expense-id="<%= @id %>">
+      <span class="glyphicon glyphicon-arrow-down"></span>
+    </button>
+  </div>
+</div>

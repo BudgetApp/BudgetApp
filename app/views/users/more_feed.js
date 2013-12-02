@@ -1,0 +1,1 @@
+$('.feed').append('<%= escape_javascript render(partial: "more_feed_expenses_with_buttons") %>').fadeIn("slow");

@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_many :friendships
+  has_many :friendships, dependent: :destroy
   has_many :friends, :through => :friendships
   serialize :info
   # has_many :inverse_friendships, :class_name => 'Friendship',
@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
 
   # Pending Friendships method invitations + requests
   # Destroying leftover friendships
-  has_many :expenses
+  has_many :expenses, dependent: :destroy
   has_many :categories, :through => :expenses
   has_many :votes
   validates_uniqueness_of :username
@@ -98,12 +98,29 @@ class User < ActiveRecord::Base
 
   ### Friend Feed Methods ###
 
+  #returns an array of expenses
   def get_friend_expenses
     self.confirmed_friends.map do |friend|
       friend.expenses
-    end.flatten.sort_by{|e| e.created_at}.reverse
+    end.flatten.sort_by{|e| e.created_at}.reverse.slice(0,10)
   end
 
+  def get_more_friend_expenses(created_at)
+    self.confirmed_friends.map do |friend|
+      friend.expenses.where("created_at < ?", created_at).limit(10)
+    end.flatten.sort_by{|e| e.created_at}.reverse.slice(0,10)
+  end
+
+  def is_hashed_uid_a_friend?(hashed_uid)
+    puts hashed_uid
+    self.confirmed_friends.map {|f| f.hashed_uid}.include?(hashed_uid)
+  end
+
+  def broadcast_expense
+    message = {:channel => FAYE_CHANNEL, :data => self.hashed_uid}
+    uri = URI.parse(FAYE_ADDRESS)
+    Net::HTTP.post_form(uri, :message => message.to_json)
+  end
 
   ### Helpful Methods ###
 

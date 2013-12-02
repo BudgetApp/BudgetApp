@@ -6,6 +6,10 @@ BudgetApp::Application.routes.draw do
   resources :expenses
 
   get '/users/:id/feed' => 'users#feed', :as => 'feed', :id => /([^\/])+?/
+  get '/users/live-feed' => 'users#live_feed'
+  get '/users/more-feed' => 'users#more_feed'
+
+  get '/users/:id/feed_sum' => 'users#feed_sum', :as => 'feed_sum', :id => /([^\/])+?/
 
   get '/users/:id' => 'users#show', :as => 'user', :id => /([^\/])+?/
   # patch '/users/:id' => 'users#update', :as => 'user', :id => /([^\/])+?/
@@ -28,6 +32,7 @@ BudgetApp::Application.routes.draw do
   post '/new-friendship' => 'friendships#new', :as => 'new_friendship'
   post '/accept-friendship' => 'friendships#accept', :as => 'accept_friendship'
 
+  post '/confirm-hash-uid' => "users#confirm_hash_uid"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

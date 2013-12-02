@@ -1,0 +1,43 @@
+// function that fetches the expense data from the server and renders json through the users controller; this is test function to then do the same thing for the whole feed. it will be messy.
+// function fetchSumData(){
+//   $.get('/users/'+user+'/feed_sum', function(json){
+//     var num_expenses = json.num_expenses;
+//     var expenses_sum = json.expenses_sum;
+//     $('#sum').html("<h3>Total Expenses:</h3><p>"+num_expenses+"</p><h3>Total Expenses sum:</h3><p>"+expenses_sum+"</p>");
+//   })
+// }
+
+$(function(){
+  var more = false;
+
+  if (window.location.pathname.match(/\/(.+)\/feed/)){
+    var faye = new Faye.Client('<%= FAYE_ADDRESS %>');
+    faye.subscribe('<%= FAYE_CHANNEL %>', function (data) {
+      $.post('/confirm-hash-uid', {uid: data}, function(json){
+        if (json.confirmation === true) {
+          $.get('/users/live-feed', {uid: data}, function(){
+            addVoteButtonListeners();
+            if (more === false && $('.feed-item').length > 10){
+              $('.feed-item').last().hide();
+            }
+          });
+        };
+      });
+    });
+  };
+  $(window).scroll(function() {
+    if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+      more = true;
+      $.get('/users/more-feed', {oldest: $('.feed-item').last().children('.created-at').val()}, function(){
+        addVoteButtonListeners();
+      });
+    };
+  }); 
+})
+
+
+
+//limit the count to 10 in the model
+//this should automatically render after the partial adds another item
+//
+//this should not happen when scrolling down

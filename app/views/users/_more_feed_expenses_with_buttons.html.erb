@@ -1,0 +1,11 @@
+<% @expenses.each do |expense| %>
+  <% @user_name = expense.user.name %>
+  <% @expense = expense %>
+  <% @id = expense.id %>
+  <% @created_at = expense.created_at %>
+  <% @amount = expense.amount%>
+  <% @category = expense.category.title%>
+  <% @upvotes = expense.votes.where(:vote_direction => true).count%>
+  <% @downvotes = expense.votes.where(:vote_direction => false).count %>
+  <%= render(partial: "expense_with_buttons") %>
+<% end %>

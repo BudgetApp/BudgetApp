@@ -1,9 +1,13 @@
 <h1><%=@user.name%>'s Friends Expenses:</h1>
-<% @user.get_friend_expenses.each do |expense| %><br>
-  <strong><%= expense.user.name %></strong> |
-  <%= number_to_currency(expense.amount.to_f/100) %> |
-  <%= expense.category.title %>
-  <div id="vote-button">
+<div class="feed">
+  <% @user.get_friend_expenses.each do |expense| %><br>
+  <div class="feed-item">
+    <%= expense.id %>
+    <%= hidden_field_tag("expense[created_at]", expense.created_at, class: "created-at")%>
+    <strong><%= expense.user.name %></strong> |
+    <%= number_to_currency(expense.amount.to_f/100) %> |
+    <%= expense.category.title %>
+    <div id="vote-button">
       <span id="upvotecountspan<%=expense.id%>"><%= expense.votes.where(:vote_direction => true).count %></span> <%= expense.votes.where(:vote_direction => true).count == 1 ? "upvote" : "upvotes" %> | 
       <button type="button" class="upvote" data-expense-id="<%= expense.id %>">
         <span class="glyphicon glyphicon-arrow-up"></span>
@@ -12,5 +16,9 @@
       <button type="button" class="downvote" data-expense-id="<%= expense.id %>">
         <span class="glyphicon glyphicon-arrow-down"></span>
       </button>
+    </div>
   </div>
-<% end %>
+  <% end %>
+</div>
+<div id="sum">
+</div>
