@@ -102,7 +102,13 @@ class User < ActiveRecord::Base
   def get_friend_expenses
     self.confirmed_friends.map do |friend|
       friend.expenses
-    end.flatten.sort_by{|e| e.created_at}.reverse
+    end.flatten.sort_by{|e| e.created_at}.reverse.slice(0,10)
+  end
+
+  def get_more_friend_expenses(created_at)
+    self.confirmed_friends.map do |friend|
+      friend.expenses.where("created_at < ?", created_at).limit(10)
+    end.flatten.sort_by{|e| e.created_at}.reverse.slice(0,10)
   end
 
   def is_hashed_uid_a_friend?(hashed_uid)

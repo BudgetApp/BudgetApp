@@ -1,6 +1,9 @@
 <h1><%=@user.name%>'s Friends Expenses:</h1>
 <div class="feed">
   <% @user.get_friend_expenses.each do |expense| %><br>
+  <div class="feed-item">
+    <%= expense.id %>
+    <%= hidden_field_tag("expense[created_at]", expense.created_at, class: "created-at")%>
     <strong><%= expense.user.name %></strong> |
     <%= number_to_currency(expense.amount.to_f/100) %> |
     <%= expense.category.title %>
@@ -14,6 +17,7 @@
         <span class="glyphicon glyphicon-arrow-down"></span>
       </button>
     </div>
+  </div>
   <% end %>
 </div>
 <div id="sum">

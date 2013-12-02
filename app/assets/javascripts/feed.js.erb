@@ -8,6 +8,8 @@
 // }
 
 $(function(){
+  var more = false;
+
   if (window.location.pathname.match(/\/(.+)\/feed/)){
     var faye = new Faye.Client('<%= FAYE_ADDRESS %>');
     faye.subscribe('<%= FAYE_CHANNEL %>', function (data) {
@@ -15,9 +17,27 @@ $(function(){
         if (json.confirmation === true) {
           $.get('/users/live-feed', {uid: data}, function(){
             addVoteButtonListeners();
+            if (more === false && $('.feed-item').length > 10){
+              $('.feed-item').last().hide();
+            }
           });
         };
       });
     });
-  }; 
+  };
+  $(window).scroll(function() {
+    if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+      more = true;
+      $.get('/users/more-feed', {oldest: $('.feed-item').last().children('.created-at').val()}, function(){
+        addVoteButtonListeners();
+      });
+    };
+  }); 
 })
+
+
+
+//limit the count to 10 in the model
+//this should automatically render after the partial adds another item
+//
+//this should not happen when scrolling down

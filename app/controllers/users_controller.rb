@@ -14,25 +14,23 @@ class UsersController < ApplicationController
       @user_name = user.name
       @expense = user.expenses.last
       @id = @expense.id
+      @created_at = @expense.created_at
       @amount = @expense.amount
       @category = @expense.category.title
       @upvotes = @expense.votes.where(:vote_direction => true).count
       @downvotes = @expense.votes.where(:vote_direction => false).count
-
-      # json_data = {
-      #   id: @id,
-      #   user: @user_name,
-      #   amount: @amount,
-      #   category: @category,
-      #   upvotes: @upvotes,
-      #   downvotes: @downvotes
-      # }
-
       respond_to do |format|
         format.js { }
       end
-      # render :json => { :data => json_data } 
     end
+  end
+
+  def more_feed
+    if @expenses = current_user.get_more_friend_expenses(params[:oldest])
+      respond_to do |format|
+        format.js { }
+      end
+    end 
   end
 
   # def feed_sum
