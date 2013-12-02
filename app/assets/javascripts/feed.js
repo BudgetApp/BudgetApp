@@ -10,3 +10,5 @@ function fetchSumData(){
 $(document).ready(fetchSumData);
 
 window.setInterval(fetchSumData, 7000);
+
+// alert($('#sum').loadTemplate);
