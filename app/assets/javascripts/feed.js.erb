@@ -8,21 +8,16 @@
 // }
 
 $(function(){
-  // fetchSumData
-  var faye = new Faye.Client('<%= FAYE_ADDRESS %>');
-  faye.subscribe('<%= FAYE_CHANNEL %>', function (data) {
-    $.post('/confirm-hash-uid', {uid: data}, function(json){
-      if (json.confirmation === true) {
-        $.get('/users/live-feed', {uid: data}, function(){
-          addVoteButtonListeners();
-        });
-      };
+  if (window.location.pathname.match(/\/(.+)\/feed/)){
+    var faye = new Faye.Client('<%= FAYE_ADDRESS %>');
+    faye.subscribe('<%= FAYE_CHANNEL %>', function (data) {
+      $.post('/confirm-hash-uid', {uid: data}, function(json){
+        if (json.confirmation === true) {
+          $.get('/users/live-feed', {uid: data}, function(){
+            addVoteButtonListeners();
+          });
+        };
+      });
     });
-  }); 
+  }; 
 })
-
-// $(document).ready(fetchSumData);
-
-//window.setInterval(fetchSumData, 7000);
-
-// alert($('#sum').loadTemplate);
