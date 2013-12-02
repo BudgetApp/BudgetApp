@@ -1,26 +1,28 @@
 // function that fetches the expense data from the server and renders json through the users controller; this is test function to then do the same thing for the whole feed. it will be messy.
-function fetchSumData(){
-  $.get('/users/'+user+'/feed_sum', function(json){
-    var num_expenses = json.num_expenses;
-    var expenses_sum = json.expenses_sum;
-    $('#sum').html("<h3>Total Expenses:</h3><p>"+num_expenses+"</p><h3>Total Expenses sum:</h3><p>"+expenses_sum+"</p>");
-  })
-}
+// function fetchSumData(){
+//   $.get('/users/'+user+'/feed_sum', function(json){
+//     var num_expenses = json.num_expenses;
+//     var expenses_sum = json.expenses_sum;
+//     $('#sum').html("<h3>Total Expenses:</h3><p>"+num_expenses+"</p><h3>Total Expenses sum:</h3><p>"+expenses_sum+"</p>");
+//   })
+// }
 
 $(function(){
-  fetchSumData
+  // fetchSumData
   var faye = new Faye.Client('<%= FAYE_ADDRESS %>');
   faye.subscribe('<%= FAYE_CHANNEL %>', function (data) {
     $.post('/confirm-hash-uid', {uid: data}, function(json){
-      alert(json.confirmation);  
-    })
-    // send a post request to see if this person is one of our friends
-    // if they are, get their latest expense and append it to the feed
+      if (json.confirmation === true) {
+        $.get('/users/feed', {uid: data}, function(feed_data){
+          alert(feed_data.data.user);  
+        });
+      };
+    });
   }); 
 })
 
 // $(document).ready(fetchSumData);
 
-window.setInterval(fetchSumData, 7000);
+//window.setInterval(fetchSumData, 7000);
 
 // alert($('#sum').loadTemplate);

@@ -5,7 +5,7 @@ BudgetApp::Application.routes.draw do
 
   resources :expenses
 
-  get '/users/:id/feed' => 'users#feed', :as => 'feed', :id => /([^\/])+?/
+  get '/users/feed' => 'users#feed', :as => 'feed'
 
   get '/users/:id/feed_sum' => 'users#feed_sum', :as => 'feed_sum', :id => /([^\/])+?/
 

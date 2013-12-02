@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131127212123) do
+ActiveRecord::Schema.define(version: 20131202170849) do
 
   create_table "categories", force: true do |t|
     t.string   "title"
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 20131127212123) do
     t.string   "uid"
     t.string   "info"
     t.string   "username"
+    t.string   "hashed_uid"
   end
 
   create_table "votes", force: true do |t|

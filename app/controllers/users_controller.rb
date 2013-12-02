@@ -6,14 +6,35 @@ class UsersController < ApplicationController
   before_action :set_user
 
   def feed
+    # Later, we might want to return more info about the user in case we want to add profile pages
+    if user = User.find_by(:hashed_uid => params[:uid])
+      user_name = user.name
+      expense = user.expenses.last
+      id = expense.id
+      amount = expense.amount
+      category = expense.category.title
+      upvotes = expense.votes.where(:vote_direction => true).count
+      downvotes = expense.votes.where(:vote_direction => false).count
+
+      json_data = {
+        id: id,
+        user: user_name,
+        amount: amount,
+        category: category,
+        upvotes: upvotes,
+        downvotes: downvotes
+      }
+
+      render :json => { :data => json_data } 
+    end
   end
 
-  def feed_sum
-    num_expenses = @user.get_friend_expenses.each { |expense| expense }.count
-    expenses_sum = 0
-    @user.get_friend_expenses.each { |expense|expenses_sum += expense.amount.to_f/100 }
-    render :json => {:num_expenses => num_expenses, :expenses_sum => number_to_currency(expenses_sum)}
-  end
+  # def feed_sum
+  #   num_expenses = @user.get_friend_expenses.each { |expense| expense }.count
+  #   expenses_sum = 0
+  #   @user.get_friend_expenses.each { |expense|expenses_sum += expense.amount.to_f/100 }
+  #   render :json => {:num_expenses => num_expenses, :expenses_sum => number_to_currency(expenses_sum)}
+  # end
 
   def show
   end

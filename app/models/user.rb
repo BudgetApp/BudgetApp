@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_many :friendships
+  has_many :friendships, dependent: :destroy
   has_many :friends, :through => :friendships
   serialize :info
   # has_many :inverse_friendships, :class_name => 'Friendship',
@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
 
   # Pending Friendships method invitations + requests
   # Destroying leftover friendships
-  has_many :expenses
+  has_many :expenses, dependent: :destroy
   has_many :categories, :through => :expenses
   has_many :votes
   validates_uniqueness_of :username
@@ -120,10 +120,6 @@ class User < ActiveRecord::Base
 
   def to_param
     self.username
-  end
-
-  def hashed_uid
-    Digest::SHA1.hexdigest(self.uid)
   end
 
 private 
