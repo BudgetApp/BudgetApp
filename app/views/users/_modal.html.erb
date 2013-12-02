@@ -1,0 +1,21 @@
+<div class="modal fade" id="add-friend" tabindex="-1" role="dialog" aria-labelledby="loginLabel" aria-hidden="true"
+  <div class="modal-dialog">
+    <div class="modal-content">
+      
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Add friends!</h4>
+      </div>
+      
+      <div class="modal-body">
+        <%= flash_messages %>
+        <%= render 'add_friends' %>
+      </div>
+
+<!--       <div class="modal-footer">
+        <a href="/users/new" class="btn btn-primary btn-lg">Not a user? Sign up!</a>
+      </div> -->
+
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

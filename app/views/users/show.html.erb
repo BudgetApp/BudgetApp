@@ -25,4 +25,4 @@
 
 <%= link_to "add new expense", new_expense_path %>
 <%= link_to "sign out", sign_out_path, method: :delete %>
-<%= link_to "add friends", add_friends_path(@user) %>
+<%= link_to "add friends", add_friends_path(@user), :class => "add-friend" %>
