@@ -18,6 +18,11 @@ class UsersController < ApplicationController
   def show
   end
 
+  def confirm_hash_uid
+    return_data = current_user.is_hashed_uid_a_friend?(params[:uid])
+    render :json => {:confirmation => return_data}
+  end
+
   def add_friends
   end
 

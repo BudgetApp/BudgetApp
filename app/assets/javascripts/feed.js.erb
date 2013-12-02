@@ -7,7 +7,19 @@ function fetchSumData(){
   })
 }
 
-$(document).ready(fetchSumData);
+$(function(){
+  fetchSumData
+  var faye = new Faye.Client('<%= FAYE_ADDRESS %>');
+  faye.subscribe('<%= FAYE_CHANNEL %>', function (data) {
+    $.post('/confirm-hash-uid', {uid: data}, function(json){
+      alert(json.confirmation);  
+    })
+    // send a post request to see if this person is one of our friends
+    // if they are, get their latest expense and append it to the feed
+  }); 
+})
+
+// $(document).ready(fetchSumData);
 
 window.setInterval(fetchSumData, 7000);
 

@@ -105,11 +105,25 @@ class User < ActiveRecord::Base
     end.flatten.sort_by{|e| e.created_at}.reverse
   end
 
+  def is_hashed_uid_a_friend?(hashed_uid)
+    puts hashed_uid
+    self.confirmed_friends.map {|f| f.hashed_uid}.include?(hashed_uid)
+  end
+
+  def broadcast_expense
+    message = {:channel => FAYE_CHANNEL, :data => self.hashed_uid}
+    uri = URI.parse(FAYE_ADDRESS)
+    Net::HTTP.post_form(uri, :message => message.to_json)
+  end
 
   ### Helpful Methods ###
 
   def to_param
     self.username
+  end
+
+  def hashed_uid
+    Digest::SHA1.hexdigest(self.uid)
   end
 
 private 
