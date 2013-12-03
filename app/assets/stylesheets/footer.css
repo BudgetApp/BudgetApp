@@ -6,6 +6,10 @@
   padding-top: 20px;
 }
 
+.footer a {
+  color: #39B3D7;
+}
+
 .footer-links {
   position: relative;
   top: -15px;
@@ -13,4 +17,5 @@
 
 a:hover {
   text-decoration: none;
+  color: #5BC0DE;
 }

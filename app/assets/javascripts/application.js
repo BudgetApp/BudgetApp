@@ -12,6 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap
-//= require jquery.loadTemplate-1.3.2
+//= require bootstrap.min
+//= require jquery.icheck.min
+//= require modernizr
+//= require placeholders.min
+//= require respond.min
 //= require_tree .

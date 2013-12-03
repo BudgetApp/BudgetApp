@@ -18,7 +18,7 @@ class ExpensesController < ApplicationController
     @expense = current_user.expenses.build(temp_expense_params)
     if !dollars.empty? && @expense.save
       current_user.broadcast_expense
-      redirect_to current_user, notice: "Expense was successfully added."
+      redirect_to current_user
     else
       render action: 'new'
     end
