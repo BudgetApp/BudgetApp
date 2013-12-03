@@ -1,5 +1,7 @@
 body, html {
   height: 100%;
+  background: image-url("body-bg.jpg") repeat top left ;
+  padding-top: 50px;
 }
 
 #wrap {
@@ -16,7 +18,7 @@ body, html {
 }
 
 .add-expense-well {
-  margin-top: 13%;
+  margin-top: 5%;
 }
 
 .forgot-password-section.animated.fadeInUp {
@@ -42,6 +44,17 @@ form {
   padding-bottom: 30px;
   padding-left: 25px;
   padding-right: 25px;
+}
+
+#error {
+  width: 100%;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.alert-special {
+  background-color: rgba(124, 146, 153, 0.9);
+  color: #f4f4f4;
 }
 
 .custom-dropdown--large {
