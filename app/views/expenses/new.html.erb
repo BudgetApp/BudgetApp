@@ -1,5 +1,29 @@
-<%= form_for @expense do |f| %>
-$<%= f.text_field :amount, :placeholder => "11.25" %>
-<%= f.select('category_id', Category.all.collect {|c| [c.title, c.id]}) %>
-<%= f.submit %>
-<% end %>
+<div class="outside-container">
+<div class="add-expense-well">
+<div class="eternity-form dark">
+  <div class="forgot-password-section animated fadeInUp">
+    <div class="section-title"><h1>Add New Expense</h1></div>
+      <div class="forgot-content">
+        <%= form_for @expense do |f| %>
+        <div class="textbox-wrap">
+          <div class="input-group input-group-lg col-lg-12">
+            <span class="input-group-addon">$</span>
+            <%= f.text_field :amount, class: "form-control", :placeholder => "11.25", id: "text-input" %>
+          </div>
+        </div>
+          <div class="input-group input-group-lg col-lg-12">
+            <span class="custom-dropdown custom-dropdown--white">
+            <%= f.select('category_id', Category.all.collect {|c| [c.title, c.id]}, {}, class: "custom-dropdown__select custom-dropdown__select--white")%>
+            </span>
+          </div>
+        <div class="forgot-form-action clearfix">
+          <div class="input-group input-group-lg col-lg-12">
+            <%= f.submit "Save", class: "btn btn-info btn-lg btn-block" %>
+          </div>
+        </div>
+        <% end %>
+      </div>
+  </div>
+</div>
+</div>
+</div>
