@@ -31,6 +31,15 @@ class Category < ActiveRecord::Base
     friends_average = user.weekly_friend_average_for(self)
     difference = ((user_total - friends_average).abs).to_f/100
 
+    case title
+    when "Cell Phone"
+      title = "your Cell Phone bill"
+    when "Gym"
+      title = "the Gym"
+    else
+      title = title
+    end
+
     if user_total > friends_average
       "You spent #{number_to_currency(difference)} more than your friends on #{title} last week."
     elsif friends_average > user_total

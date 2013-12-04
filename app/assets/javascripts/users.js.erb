@@ -9,10 +9,10 @@ $(function(){
     donutLandingChart.Doughnut(expenses, {labelAlign: 'center'});
 
   });
-  
+
   function getCategory(){
     $.get('/categories/get-random-category', function(){
-      setTimeout(getCategory, 5000);
+      setTimeout(getCategory, 7000);
     });
   };
 
