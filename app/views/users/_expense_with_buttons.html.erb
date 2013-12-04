@@ -1,7 +1,6 @@
 <br>
 <div class="feed-item">
   <%= hidden_field_tag("expense[created_at]", @created_at, class: "created-at")%>
-  <%= @id %>
   <strong><%= @user_name %></strong> |
   <%= number_to_currency(@amount.to_f/100) %> |
   <%= @category %>

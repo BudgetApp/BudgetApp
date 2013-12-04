@@ -105,6 +105,11 @@ table {
   margin-top: 5%;
 }
 
+.feed-well {
+  max-height: 500px;
+  overflow-y: auto;
+}
+
 .forgot-password-section.animated.fadeInUp {
   border-radius: 5px;
 }

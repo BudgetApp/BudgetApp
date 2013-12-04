@@ -25,14 +25,22 @@ $(function(){
       });
     });
   };
-  $(window).scroll(function() {
-    if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+  $(".feed-well").bind("scroll", function(){
+    if ($(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight){
       more = true;
       $.get('/users/more-feed', {oldest: $('.feed-item').last().children('.created-at').val()}, function(){
         addVoteButtonListeners();
       });
-    };
-  }); 
+    }
+  });
+  // $(window).scroll(function() {
+  //   if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+  //     more = true;
+  //     $.get('/users/more-feed', {oldest: $('.feed-item').last().children('.created-at').val()}, function(){
+  //       addVoteButtonListeners();
+  //     });
+  //   };
+  // }); 
 })
 
 
