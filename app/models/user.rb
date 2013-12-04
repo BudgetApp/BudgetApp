@@ -118,8 +118,6 @@ class User < ActiveRecord::Base
 
   ### Friend Feed Methods ###
 
-  # Returns an array where index[0] is number of averages, and index[1] is
-  # an array of averages
   def get_all_friend_expense_averages_for(category)
     averages = self.confirmed_friends.map do |friend|
       friend.expenses.where(:category => category).average('amount')
@@ -148,6 +146,16 @@ class User < ActiveRecord::Base
     message = {:channel => FAYE_CHANNEL, :data => self.hashed_uid}
     uri = URI.parse(FAYE_ADDRESS)
     Net::HTTP.post_form(uri, :message => message.to_json)
+  end
+
+  ### Category Methods ###
+
+  def average_popularity_for(category)
+    expense_array = self.last_week_expenses.where(:category => category).map do |expense|
+      expense.get_overall_vote_count
+    end
+
+    expense_array.inject(:+).to_f / expense_array.size
   end
 
   ### Helpful Methods ###

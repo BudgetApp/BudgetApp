@@ -18,4 +18,39 @@ $(function(){
 
   getCategory();
 
+  var line_ctx = $('#popularity-landing-chart').get(0).getContext("2d");
+  var popularityLandingChart = new Chart(line_ctx);
+
+  $.get('/users/expenses/popularity', function(popularityData){
+    var lineGraphData = {
+      labels : ["Dining Out",
+                "Groceries",
+                "Alcohol",
+                "Take-Out",
+                "Public Transportation",
+                "Cabs/Taxis",
+                "Clothing",
+                "Out of Town Travel",
+                "Cell Phone",
+                "Rent",
+                "Utilities",
+                "Books",
+                "Gym",
+                "Misc."
+              ],
+      datasets : [
+                  {
+                    fillColor : "rgba(22,147,167,0.5)",
+                    strokeColor : "rgba(220,220,220,1)",
+                    pointColor : "rgba(255,107,107,1)",
+                    pointStrokeColor : "#fff",
+                    data : popularityData.averages
+                  }
+                 ]
+    };
+
+    popularityLandingChart.Line(lineGraphData);
+
+  });
+
 });

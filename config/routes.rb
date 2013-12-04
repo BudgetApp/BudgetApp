@@ -36,6 +36,7 @@ BudgetApp::Application.routes.draw do
 
   get '/categories/get-random-category' => "categories#get_random_category"
 
+  get '/users/expenses/popularity' => "users#expense_popularity"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

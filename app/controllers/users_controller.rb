@@ -68,28 +68,6 @@ class UsersController < ApplicationController
   end
 
   def weekly_expenses
-    # 1# C7F464
-    # 2# 4ECDC4
-    # 3# 556270
-    # 4# 339194
-    # 5# C7F464
-    # 6# F6D86B
-    # 7# FB6B41
-    # 8# F10C49
-    # 9# A70267
-    # 10# 1693A7
-    # 11# F8FCC1
-    # 12# C8CF02
-    # 13# E6781E
-    # 14# CC0C39
-    # 15# 95CFB7
-    # 16# FFF7BD
-    # 17# F2F26F
-    # 18# FF823A
-    # 19# F04155
-    # 20# C44D58
-    # 21# FF6B6B
-
     expenses = [
                 {value: current_user.last_week_expenses_sum_for('Dining Out'), color: '#FF6B6B'},
                 {value: current_user.last_week_expenses_sum_for('Groceries'), color: '#4ECDC4'},#Bright Blue
@@ -107,6 +85,14 @@ class UsersController < ApplicationController
                 {value: current_user.last_week_expenses_sum_for('Misc.'), color: '#CC0C39' } # Darker Red
                ]
     render :json => {expenses: expenses}
+  end
+
+  def expense_popularity
+    averages = Category.all.map do |category|
+      current_user.average_popularity_for(category)
+    end
+
+    render :json => {averages: averages}
   end
 
   private
