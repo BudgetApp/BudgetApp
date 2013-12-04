@@ -1,4 +1,4 @@
-<h1 class="feed-h1">Friends' Expenses:</h1>
+<h1 class="feed-h1">Friends' Expenses</h1>
 <div class="well clearfix feed-well col-lg-5">
 <div class="feed">
   <% @user.get_friend_expenses.each do |expense| %><br>
@@ -21,17 +21,21 @@
 </div>
 </div>
 <div class="well clearfix col-lg-6 col-lg-offset-1">
-<h1>Friends</h1>
-<% @user.confirmed_friends.each do |friend| %>
-  <%= friend.name %>
-<% end %>
-
-<h1>Pending Friend Requests</h1>
-<% @user.pending_friendship_requests.each do |request| %>
-  <%= request.friend.name %>
-  <%= form_tag('/accept-friendship', method: :post) do %>
-    <%= hidden_field_tag 'friendship[id]', request.id %>
-    <%= submit_tag "accept" %>
+  <h1>Pending Friend Requests</h1>
+  <% if !@user.pending_friendship_requests.any? %>
+    <em><p>You don't have any pending friend requests.</p></em>
+    <%= link_to "Find Your Friends!", add_friends_path, class: "btn btn-lg btn-info" %>
   <% end %>
-<% end %>
+  <% @user.pending_friendship_requests.each do |request| %>
+    <%= request.friend.name %>
+    <%= form_tag('/accept-friendship', method: :post) do %>
+      <%= hidden_field_tag 'friendship[id]', request.id %>
+      <%= submit_tag "accept" %>
+    <% end %>
+  <% end %>
+
+  <h1>Friends</h1>
+  <% @user.confirmed_friends.each do |friend| %>
+    <%= friend.name %>
+  <% end %>
 </div>
