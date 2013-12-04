@@ -7,7 +7,7 @@ Category.create!([
   { :title => "Groceries", :created_at => "2013-11-26 21:17:06", :updated_at => "2013-11-26 21:17:06" },
   { :title => "Alcohol", :created_at => "2013-11-26 21:17:06", :updated_at => "2013-11-26 21:17:06" },
   { :title => "Take-Out", :created_at => "2013-11-26 21:17:06", :updated_at => "2013-11-26 21:17:06" },
-  { :title => "Public Transportation", :created_at => "2013-11-26 21:17:06", :updated_at => "2013-11-26 21:17:06" },
+  { :title => "Public Transit", :created_at => "2013-11-26 21:17:06", :updated_at => "2013-11-26 21:17:06" },
   { :title => "Cabs/Taxis", :created_at => "2013-11-26 21:17:06", :updated_at => "2013-11-26 21:17:06" },
   { :title => "Clothing", :created_at => "2013-11-26 21:17:06", :updated_at => "2013-11-26 21:17:06" },
   { :title => "Out of Town Travel", :created_at => "2013-11-26 21:17:06", :updated_at => "2013-11-26 21:17:06" },

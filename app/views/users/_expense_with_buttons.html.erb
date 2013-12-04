@@ -1,9 +1,9 @@
 <br>
 <div class="feed-item">
   <%= hidden_field_tag("expense[created_at]", @created_at, class: "created-at")%>
-  <strong><%= @user_name %></strong> |
-  <%= number_to_currency(@amount.to_f/100) %> |
-  <%= @category %>
+  <strong><%= @user_name %></strong> &#8212;
+  <%= number_to_currency(@amount.to_f/100) %> &#8212;
+  <strong><span style="color:<%= @color %>;"><%= @category %></span></strong>
   <div id="vote-button"> 
       <button type="button" class="upvote btn btn-xs btn-success" data-expense-id="<%= @id %>">
         <span class="glyphicon glyphicon-arrow-up"><span id="upvotecountspan<%=@id%>"><%= @upvotes %></span></span>

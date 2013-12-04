@@ -13,6 +13,7 @@ class UsersController < ApplicationController
       @id = @expense.id
       @created_at = @expense.created_at
       @amount = @expense.amount
+      @color = @expense.category.get_color
       @category = @expense.category.title
       @upvotes = @expense.votes.where(:vote_direction => true).count
       @downvotes = @expense.votes.where(:vote_direction => false).count
@@ -73,13 +74,13 @@ class UsersController < ApplicationController
                 {value: current_user.last_week_expenses_sum_for('Groceries'), color: '#4ECDC4'},#Bright Blue
                 {value: current_user.last_week_expenses_sum_for('Alcohol'), color: '#556270'}, #Dark grey
                 {value: current_user.last_week_expenses_sum_for('Take-Out'), color: '#339194'},
-                {value: current_user.last_week_expenses_sum_for('Public Transportation'), color: '#C7F464'}, #bright green
+                {value: current_user.last_week_expenses_sum_for('Public Transit'), color: '#025D8C'}, #bright green
                 {value: current_user.last_week_expenses_sum_for('Cabs/Taxis'), color: '#F6D86B'},
                 {value: current_user.last_week_expenses_sum_for('Clothing'), color: '#FB6B41'},
                 {value: current_user.last_week_expenses_sum_for('Out of Town Travel'), color: '#F10C49'},
                 {value: current_user.last_week_expenses_sum_for('Cell Phone'), color: '#A70267'},
                 {value: current_user.last_week_expenses_sum_for('Rent'), color: '#1693A7'},
-                {value: current_user.last_week_expenses_sum_for('Utilities'), color: '#F8FCC1'},
+                {value: current_user.last_week_expenses_sum_for('Utilities'), color: '#630947'},
                 {value: current_user.last_week_expenses_sum_for('Books'), color: '#FF823A'},
                 {value: current_user.last_week_expenses_sum_for('Gym'), color: '#95CFB7'},
                 {value: current_user.last_week_expenses_sum_for('Misc.'), color: '#CC0C39' } # Darker Red

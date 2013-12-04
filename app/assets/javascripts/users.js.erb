@@ -6,7 +6,7 @@ $(function(){
   $.get('/users/expenses/weekly', function(weeklyExpenses){
     var expenses = weeklyExpenses.expenses;
 
-    donutLandingChart.Doughnut(expenses, {labelAlign: 'center'});
+    donutLandingChart.Doughnut(expenses);
 
   });
 
@@ -27,7 +27,7 @@ $(function(){
                 "Groceries",
                 "Alcohol",
                 "Take-Out",
-                "Public Transportation",
+                "Public Transit",
                 "Cabs/Taxis",
                 "Clothing",
                 "Out of Town Travel",
