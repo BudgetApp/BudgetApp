@@ -10,7 +10,7 @@ Category.create!([
   { :title => "Public Transit", :created_at => "2013-11-26 21:17:06", :updated_at => "2013-11-26 21:17:06" },
   { :title => "Cabs/Taxis", :created_at => "2013-11-26 21:17:06", :updated_at => "2013-11-26 21:17:06" },
   { :title => "Clothing", :created_at => "2013-11-26 21:17:06", :updated_at => "2013-11-26 21:17:06" },
-  { :title => "Out of Town Travel", :created_at => "2013-11-26 21:17:06", :updated_at => "2013-11-26 21:17:06" },
+  { :title => "Travel", :created_at => "2013-11-26 21:17:06", :updated_at => "2013-11-26 21:17:06" },
   { :title => "Cell Phone", :created_at => "2013-11-26 21:17:06", :updated_at => "2013-11-26 21:17:06" },
   { :title => "Rent", :created_at => "2013-11-26 21:17:06", :updated_at => "2013-11-26 21:17:06" },
   { :title => "Utilities", :created_at => "2013-11-26 21:17:06", :updated_at => "2013-11-26 21:17:06" },

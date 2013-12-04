@@ -77,7 +77,7 @@ class UsersController < ApplicationController
                 {value: current_user.last_week_expenses_sum_for('Public Transit'), color: '#025D8C'}, #bright green
                 {value: current_user.last_week_expenses_sum_for('Cabs/Taxis'), color: '#F6D86B'},
                 {value: current_user.last_week_expenses_sum_for('Clothing'), color: '#FB6B41'},
-                {value: current_user.last_week_expenses_sum_for('Out of Town Travel'), color: '#F10C49'},
+                {value: current_user.last_week_expenses_sum_for('Travel'), color: '#F10C49'},
                 {value: current_user.last_week_expenses_sum_for('Cell Phone'), color: '#A70267'},
                 {value: current_user.last_week_expenses_sum_for('Rent'), color: '#1693A7'},
                 {value: current_user.last_week_expenses_sum_for('Utilities'), color: '#630947'},

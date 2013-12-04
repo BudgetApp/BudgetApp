@@ -11,7 +11,7 @@ class Category < ActiveRecord::Base
                       'Public Transit' => '#025D8C',
                       'Cabs/Taxis' => '#F6D86B',
                       'Clothing' => '#FB6B41',
-                      'Out of Town Travel' => '#F10C49',
+                      'Travel' => '#F10C49',
                       'Cell Phone' => '#A70267',
                       'Rent' => '#1693A7',
                       'Utilities' => '#630947',
