@@ -4,6 +4,24 @@ body, html {
   padding-top: 50px;
 }
 
+.jumbotron {
+  border-radius: 5px !important;
+}
+
+.landing-custom {
+  background-color: #F8F8F8;
+}
+
+.login-button-div {
+  text-align: center;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.login-button {
+  margin: 0 auto;
+}
+
 .weekly-expense-chart h4 {
   text-align: center;
 }
