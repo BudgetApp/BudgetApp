@@ -78,8 +78,8 @@ class User < ActiveRecord::Base
     category_ids.map {|id| Category.find(id)}
   end
 
-  def last_week_expenses_sum_for(category)
-    last_week_expenses.select {|e| e.category.title == category}.map {|e| e.amount.to_i}.inject(:+)
+  def last_week_expenses_sum_for(category_title)
+    last_week_expenses.select {|e| e.category.title == category_title}.map {|e| e.amount.to_i}.inject(:+)
   end
 
   def last_week_expenses
@@ -106,9 +106,27 @@ class User < ActiveRecord::Base
     self.last_month_expenses.select {|e| e.created_at.saturday? || e.created_at.sunday?}
   end
 
+  def weekly_friend_average_for(category)
+    averages_array = self.get_all_friend_expense_averages_for(category)
+    total = averages_array[1].inject(:+)
+    if total
+      total / averages_array[0]
+    else
+      0
+    end
+  end
+
   ### Friend Feed Methods ###
 
-  #returns an array of expenses
+  # Returns an array where index[0] is number of averages, and index[1] is
+  # an array of averages
+  def get_all_friend_expense_averages_for(category)
+    averages = self.confirmed_friends.map do |friend|
+      friend.expenses.where(:category => category).average('amount')
+    end.flatten
+    [averages.length, averages]
+  end
+
   def get_friend_expenses
     self.confirmed_friends.map do |friend|
       friend.expenses

@@ -1,5 +1,7 @@
 <div class="well weekly-expenses-well">
-  <div class="weekly-expense-chart col-lg-6 col-lg-offset-3">
+  <div class="friend-average-weekly-expense-display col-lg-3">
+  </div>
+  <div class="weekly-expense-chart col-lg-6">
     <h1>Your Weekly Expenses</h1>
     <h4><em><%= Chronic.parse('one week ago').strftime('%B %d, %Y') %> - <%= time_tag Date.today %></em></h4>
     <canvas id="donut-landing-chart" width="400" height="400"></canvas>

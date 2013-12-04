@@ -1,6 +1,3 @@
-include ActionView::Helpers::NumberHelper
-#is this to include number_to_currency in this controller; not best practices, but okay...
-
 class UsersController < ApplicationController
 
   before_action :set_user

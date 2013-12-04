@@ -23,4 +23,21 @@ class Category < ActiveRecord::Base
     CATEGORY_COLORS[self.title]
   end
 
+  def get_human_readable_text(user)
+
+    title = self.title
+    user_total = user.last_week_expenses_sum_for(title)
+    friends_average = user.weekly_friend_average_for(self)
+    difference = ((user_total - friends_average).abs).to_f/100
+
+    if user_total > friends_average
+      "You spent #{number_to_currency(difference)} more than your friends on #{title} last week."
+    elsif friends_average > user_total
+      "You spent #{number_to_currency(difference)} less than your friends on #{title} last week."
+    else
+      "You and your friends spend the same amount on #{title} last week."
+    end
+
+  end
+
 end

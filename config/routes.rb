@@ -1,8 +1,6 @@
 BudgetApp::Application.routes.draw do
   resources :votes
 
-  resources :categories
-
   resources :expenses
 
   get '/users/:id/feed' => 'users#feed', :as => 'feed', :id => /([^\/])+?/
@@ -35,6 +33,9 @@ BudgetApp::Application.routes.draw do
   post '/confirm-hash-uid' => "users#confirm_hash_uid"
 
   get '/users/expenses/weekly' => "users#weekly_expenses"
+
+  get '/categories/get-random-category' => "categories#get_random_category"
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

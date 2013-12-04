@@ -1,0 +1,3 @@
+<% if !@user.last_week_expenses.empty? %>
+  <h1 style="background-color:<%= @category.get_color %>;"><%= @category.get_human_readable_text(@user) %>
+<% end %>
