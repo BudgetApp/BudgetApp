@@ -9,7 +9,7 @@
 
 $(function(){
   var more = false;
-
+  addVoteButtonListeners();
   if (window.location.pathname.match(/\/(.+)\/feed/)){
     var faye = new Faye.Client('<%= FAYE_ADDRESS %>');
     faye.subscribe('<%= FAYE_CHANNEL %>', function (data) {
