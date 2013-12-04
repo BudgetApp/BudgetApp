@@ -1,10 +1,15 @@
 class FriendshipsController < ApplicationController
 
   def new
-    # Right now, this is stupid and ID refers to a friend's id
-    friend = User.find_by(friendship_params)
-    current_user.add_friend(friend)
+    friendship_params[:friend_id].each do |friend_id|
+      friend = User.find(friend_id)
+      current_user.add_friend(friend) if friend
+    end
+
     redirect_to user_path(current_user)
+    # friend = User.find_by(friendship_params)
+    # current_user.add_friend(friend)
+    # redirect_to user_path(current_user)
   end
 
   def accept
@@ -14,7 +19,7 @@ class FriendshipsController < ApplicationController
 
   private
     def friendship_params
-      params.require(:friendship).permit(:id)
+      params.require(:friendship).permit(:id, :friend_id => [])
     end
 
 end

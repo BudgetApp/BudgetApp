@@ -261,6 +261,7 @@ DEPENDENCIES
   koala
   omniauth
   omniauth-facebook
+  pry
   rails (= 4.0.1)
   rspec-rails
   sass-rails (~> 4.0.0)

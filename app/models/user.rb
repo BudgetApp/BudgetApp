@@ -121,7 +121,7 @@ class User < ActiveRecord::Base
   def get_all_friend_expense_averages_for(category)
     averages = self.confirmed_friends.map do |friend|
       friend.expenses.where(:category => category).average('amount')
-    end.flatten
+    end.flatten.compact
     [averages.length, averages]
   end
 

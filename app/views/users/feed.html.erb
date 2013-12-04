@@ -35,7 +35,9 @@
   <% end %>
 
   <h1>Friends</h1>
-  <% @user.confirmed_friends.each do |friend| %>
-    <%= friend.name %>
-  <% end %>
+  <ul>
+    <% @user.confirmed_friends.each do |friend| %>
+      <li><%= friend.name %></li>
+    <% end %>
+  </ul>
 </div>

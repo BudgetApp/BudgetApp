@@ -1,7 +1,43 @@
-<% @user.facebook_friends.each do |friend| %>
-  <%= friend.name %>
-  <%= form_tag('/new-friendship', method: :post) do %>
-    <%= hidden_field_tag 'friendship[id]', friend.id %>
-    <%= submit_tag "add" %>
-  <% end %>
+<% if flash[:notice] %>
+  <div class="alert alert-special" id="error">
+    <p><%= flash[:notice] %></p>
+  </div>
 <% end %>
+<div class="outside-container">
+<div class="add-expense-well">
+<div class="eternity-form dark">
+  <div class="forgot-password-section animated fadeInUp">
+    <div class="section-title add-fb-section-title"><h1>Add Friends</h1></div>
+      <div class="forgot-content">
+        <% if !@user.facebook_friends.any? %>
+
+          <div class="textbox-wrap">
+            <a class="btn btn-lg btn-info btn-block" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fparse.com" target="_blank">Invite your Facebook Friends!</a>
+          </div>
+
+        <% else %>
+
+          <%= form_tag('/new-friendship', method: :post) do %>
+            <% @user.facebook_friends.each do |friend| %>
+              <%#= hidden_field_tag 'friendship[id]', friend.id %>
+              <!-- <div class="textbox-wrap"> -->
+                <div class="input-group input-group-lg col-lg-12">
+                  <%= check_box_tag 'friendship[friend_id][]', friend.id %>
+                  <%= friend.name %>
+                </div>
+              <!-- </div> -->
+            <% end %>
+
+            <div class="forgot-form-action clearfix">
+              <div class="input-group input-group-lg col-lg-12">
+                <%= submit_tag "Add", class: "btn btn-lg btn-info btn-block add-fb-button" %>
+              </div>
+            </div>
+          <% end %>
+
+        <% end %>
+      </div>
+  </div>
+</div>
+</div>
+</div>
