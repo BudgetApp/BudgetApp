@@ -12,6 +12,17 @@ body, html {
   text-align: center;
 }
 
+.btn-tall {
+  margin-top: 50px;
+  margin-bottom: -45px;
+  height: 100px;
+}
+
+a.btn-tall {
+  padding-top: 20px;
+  font-size: 2.7em;
+}
+
 .weekly-expenses-well {
   padding-bottom: 90px;
 }

@@ -1,12 +1,12 @@
-<div class="well weekly-expenses-well">
-  <div class="friend-average-weekly-expense-display col-lg-3">
-  </div>
-  <div class="weekly-expense-chart col-lg-6">
-    <h1>Your Weekly Expenses</h1>
-    <h4><em><%= Chronic.parse('one week ago').strftime('%B %d, %Y') %> - <%= time_tag Date.today %></em></h4>
-    <canvas id="donut-landing-chart" width="400" height="400"></canvas>
-  </div>
+<div class="well clearfix weekly-expenses-well">
   <% if !@user.last_week_expenses.empty? %>
+    <div class="friend-average-weekly-expense-display col-lg-3">
+    </div>
+    <div class="weekly-expense-chart col-lg-6">
+      <h1>Your Weekly Expenses</h1>
+      <h4><em><%= Chronic.parse('one week ago').strftime('%B %d, %Y') %> - <%= time_tag Date.today %></em></h4>
+      <canvas id="donut-landing-chart" width="400" height="400"></canvas>
+    </div>
     <table class="user-weekly-expenses">
       <tr class="user-weekly-expenses">
         <th class="color-swatch"></th>
@@ -21,5 +21,10 @@
         </tr>
       <% end %>
     </table>
+  <% else %>
+    <div class="no-weekly-expenses col-lg-6 col-lg-offset-3">
+      <h1 style="text-align:center;">It looks like you haven't added any expenses in the past week</h1>
+      <%= link_to "Add Some Now!", new_expense_path, class: "btn btn-xlg btn-info btn-block btn-tall" %>
+    </div>
   <% end %>
 </div>
