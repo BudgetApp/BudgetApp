@@ -1,4 +1,5 @@
 class Category < ActiveRecord::Base
+  include ActionView::Helpers::NumberHelper
   has_many :expenses
   has_many :users, :through => :expenses
 
