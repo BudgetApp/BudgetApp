@@ -1,5 +1,5 @@
-<h1><%=@user.name%>'s Friends Expenses:</h1>
-<div class="well clearfix feed-well">
+<h1 class="feed-h1">Friends' Expenses:</h1>
+<div class="well clearfix feed-well col-lg-5">
 <div class="feed">
   <% @user.get_friend_expenses.each do |expense| %><br>
   <div class="feed-item">
@@ -7,21 +7,20 @@
     <strong><%= expense.user.name %></strong> |
     <%= number_to_currency(expense.amount.to_f/100) %> |
     <%= expense.category.title %>
-    <div id="vote-button">
-      <span id="upvotecountspan<%=expense.id%>"><%= expense.votes.where(:vote_direction => true).count %></span> <%= expense.votes.where(:vote_direction => true).count == 1 ? "upvote" : "upvotes" %> | 
-      <button type="button" class="upvote" data-expense-id="<%= expense.id %>">
-        <span class="glyphicon glyphicon-arrow-up"></span>
+    <div id="vote-button"> 
+      <button type="button" class="upvote btn btn-xs btn-success" data-expense-id="<%= expense.id %>">
+        <span class="glyphicon glyphicon-arrow-up"><span id="upvotecountspan<%=expense.id%>"><%= expense.votes.where(:vote_direction => true).count %></span></span>
       </button>
-      <span id="downvotecountspan<%=expense.id%>"><%= expense.votes.where(:vote_direction => false).count %></span> <%= expense.votes.where(:vote_direction => false).count == 1 ? "downvote" : "downvotes" %> | 
-      <button type="button" class="downvote" data-expense-id="<%= expense.id %>">
-        <span class="glyphicon glyphicon-arrow-down"></span>
+      <button type="button" class="downvote btn btn-xs btn-danger" data-expense-id="<%= expense.id %>">
+        <span class="glyphicon glyphicon-arrow-down"><span id="downvotecountspan<%=expense.id%>"><%= expense.votes.where(:vote_direction => false).count %></span></span>
       </button>
     </div>
+    <div class="feed-item-separator"></div>
   </div>
   <% end %>
 </div>
 </div>
-
+<div class="well clearfix col-lg-6 col-lg-offset-1">
 <h1>Friends</h1>
 <% @user.confirmed_friends.each do |friend| %>
   <%= friend.name %>
@@ -35,3 +34,4 @@
     <%= submit_tag "accept" %>
   <% end %>
 <% end %>
+</div>

@@ -110,6 +110,26 @@ table {
   overflow-y: auto;
 }
 
+.feed-h1 {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.feed:first-child {
+  margin-top: -25px;
+}
+
+#vote-button {
+  display: inline-block;
+  float: right;
+}
+
+.feed-item-separator {
+  width: 430px;
+  margin: 15px auto 0;
+  border-bottom: 1px solid #999;
+}
+
 .forgot-password-section.animated.fadeInUp {
   border-radius: 5px;
 }

@@ -4,14 +4,13 @@
   <strong><%= @user_name %></strong> |
   <%= number_to_currency(@amount.to_f/100) %> |
   <%= @category %>
-  <div id="vote-button">
-    <span id="upvotecountspan<%= @id %>"><%= @upvotes %></span> <%= "upvote".pluralize(@upvotes) %> | 
-    <button type="button" class="upvote" data-expense-id="<%= @id %>">
-      <span class="glyphicon glyphicon-arrow-up"></span>
-    </button>
-    <span id="downvotecountspan<%= @id %>"><%= @downvotes %></span> <%= "downvote".pluralize(@downvotes) %> | 
-    <button type="button" class="downvote" data-expense-id="<%= @id %>">
-      <span class="glyphicon glyphicon-arrow-down"></span>
-    </button>
-  </div>
+  <div id="vote-button"> 
+      <button type="button" class="upvote btn btn-xs btn-success" data-expense-id="<%= @id %>">
+        <span class="glyphicon glyphicon-arrow-up"><span id="upvotecountspan<%=@id%>"><%= @upvotes %></span></span>
+      </button>
+      <button type="button" class="downvote btn btn-xs btn-danger" data-expense-id="<%= @id %>">
+        <span class="glyphicon glyphicon-arrow-down"><span id="downvotecountspan<%=@id%>"><%= @downvotes %></span></span>
+      </button>
+    </div>
+  <div class="feed-item-separator"></div>
 </div>
