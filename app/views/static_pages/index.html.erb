@@ -1,8 +1,32 @@
-<div class="jumbotron center landing-custom">
+<!-- <div class="jumbotron center landing-custom">
   <p><strong>BudgetApp</strong> is a way to track your expenses and see how they compare to your friends. Simple infographics display what you're spending your money on and which expenses your friends think are reasonable. Log in with Facebook to get started!</p>
 <br>
   <div class="login-button-div">
-  <%= link_to 'Log in with Facebook', facebook_login_path, class: "btn btn-lg btn-info login-button" %>
+  <%#= link_to 'Log in with Facebook', facebook_login_path, class: "btn btn-lg btn-info login-button" %>
   </div>
 
+</div> -->
+
+<div class="outside-container">
+<div class="add-expense-well">
+<div class="eternity-form dark">
+  <div class="forgot-password-section animated fadeInUp">
+    <div class="section-title"><h1>Welcome!</h1></div>
+      <div class="forgot-content">
+        <form>
+        <div class="textbox-wrap">
+          <div class="input-group input-group-lg col-lg-12">
+            <p class="about-p"><strong>BudgetApp</strong> is a way to track your expenses and see how they compare to your friends. Simple infographics display what you're spending your money on and which expenses your friends think are reasonable.</p>
+          </div>
+        </div>
+        <div class="forgot-form-action clearfix">
+          <div class="input-group input-group-lg col-lg-12">
+            <%= link_to 'Log in with Facebook to get started!', facebook_login_path, class: "btn btn-info btn-lg btn-block link-about" %>
+          </div>
+        </div>
+      </form>
+      </div>
+  </div>
+</div>
+</div>
 </div>
