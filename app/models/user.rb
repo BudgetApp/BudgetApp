@@ -72,6 +72,16 @@ class User < ActiveRecord::Base
 
   ### Expense Data Methods ###
 
+  def last_week_expenses_categories
+    category_ids = self.last_week_expenses.pluck(:category_id) if self.last_week_expenses
+    category_ids.uniq!
+    category_ids.map {|id| Category.find(id)}
+  end
+
+  def last_week_expenses_sum_for(category)
+    last_week_expenses.select {|e| e.category.title == category}.map {|e| e.amount.to_i}.inject(:+)
+  end
+
   def last_week_expenses
     self.expenses.where("created_at >= ?", Chronic.parse("one week ago"))
   end

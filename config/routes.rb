@@ -33,6 +33,8 @@ BudgetApp::Application.routes.draw do
   post '/accept-friendship' => 'friendships#accept', :as => 'accept_friendship'
 
   post '/confirm-hash-uid' => "users#confirm_hash_uid"
+
+  get '/users/expenses/weekly' => "users#weekly_expenses"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

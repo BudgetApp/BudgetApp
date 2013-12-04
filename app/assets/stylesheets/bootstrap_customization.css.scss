@@ -4,6 +4,49 @@ body, html {
   padding-top: 50px;
 }
 
+.weekly-expense-chart h4 {
+  text-align: center;
+}
+
+.weekly-expense-chart h1 {
+  text-align: center;
+}
+
+.weekly-expenses-well {
+  padding-bottom: 90px;
+}
+
+#donut-landing-chart {
+  margin-left: 13%;
+}
+
+td.color-swatch {
+  padding-right: 20px;
+}
+
+td.weekly-expenses-title-td {
+  padding-right: 20px;
+  padding-left: 10px;
+}
+
+th.weekly-expenses-title-th {
+  padding-right: 20px;
+  padding-left: 10px;
+}
+
+tr.weekly-expenses-tr {
+  padding-bottom: 150px;
+}
+
+table.user-weekly-expenses {
+  margin-top: 80px;
+}
+
+table {
+  border-collapse:separate; 
+  border-spacing:.45em;
+}
+
 #wrap {
   min-height: 100%;
 }

@@ -70,6 +70,48 @@ class UsersController < ApplicationController
     render :json => {:downvote_count => new_downvote_count, :upvote_count => new_upvote_count}
   end
 
+  def weekly_expenses
+    # 1# C7F464
+    # 2# 4ECDC4
+    # 3# 556270
+    # 4# 339194
+    # 5# C7F464
+    # 6# F6D86B
+    # 7# FB6B41
+    # 8# F10C49
+    # 9# A70267
+    # 10# 1693A7
+    # 11# F8FCC1
+    # 12# C8CF02
+    # 13# E6781E
+    # 14# CC0C39
+    # 15# 95CFB7
+    # 16# FFF7BD
+    # 17# F2F26F
+    # 18# FF823A
+    # 19# F04155
+    # 20# C44D58
+    # 21# FF6B6B
+
+    expenses = [
+                {value: current_user.last_week_expenses_sum_for('Dining Out'), color: '#FF6B6B'},
+                {value: current_user.last_week_expenses_sum_for('Groceries'), color: '#4ECDC4'},#Bright Blue
+                {value: current_user.last_week_expenses_sum_for('Alcohol'), color: '#556270'}, #Dark grey
+                {value: current_user.last_week_expenses_sum_for('Take-Out'), color: '#339194'},
+                {value: current_user.last_week_expenses_sum_for('Public Transportation'), color: '#C7F464'}, #bright green
+                {value: current_user.last_week_expenses_sum_for('Cabs/Taxis'), color: '#F6D86B'},
+                {value: current_user.last_week_expenses_sum_for('Clothing'), color: '#FB6B41'},
+                {value: current_user.last_week_expenses_sum_for('Out of Town Travel'), color: '#F10C49'},
+                {value: current_user.last_week_expenses_sum_for('Cell Phone'), color: '#A70267'},
+                {value: current_user.last_week_expenses_sum_for('Rent'), color: '#1693A7'},
+                {value: current_user.last_week_expenses_sum_for('Utilities'), color: '#F8FCC1'},
+                {value: current_user.last_week_expenses_sum_for('Books'), color: '#FF823A'},
+                {value: current_user.last_week_expenses_sum_for('Gym'), color: '#95CFB7'},
+                {value: current_user.last_week_expenses_sum_for('Misc.'), color: '#CC0C39' } # Darker Red
+               ]
+    render :json => {expenses: expenses}
+  end
+
   private
   def set_user
     @user = current_user

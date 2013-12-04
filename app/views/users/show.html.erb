@@ -1,24 +1,23 @@
-<%= @user.name %><br>
-<%= @user.email %><br>
-<% if !@user.expenses.empty? %>
-  <ul>
-    <% @user.expenses.each do |expense| %>
-      <li><%= number_to_currency(expense.amount.to_f/100) %> | <%= expense.category.title %>
-      </li>
-    <% end %>
-  </ul>
-<% end %>
-<br>
-<h1>Friends</h1>
-<% @user.confirmed_friends.each do |friend| %>
-  <%= friend.name %>
-<% end %>
-
-<h1>Pending Friend Requests</h1>
-<% @user.pending_friendship_requests.each do |request| %>
-  <%= request.friend.name %>
-  <%= form_tag('/accept-friendship', method: :post) do %>
-    <%= hidden_field_tag 'friendship[id]', request.id %>
-    <%= submit_tag "accept" %>
+<div class="well weekly-expenses-well">
+  <div class="weekly-expense-chart col-lg-6 col-lg-offset-3">
+    <h1>Your Weekly Expenses</h1>
+    <h4><em><%= Chronic.parse('one week ago').strftime('%B %d, %Y') %> - <%= time_tag Date.today %></em></h4>
+    <canvas id="donut-landing-chart" width="400" height="400"></canvas>
+  </div>
+  <% if !@user.last_week_expenses.empty? %>
+    <table class="user-weekly-expenses">
+      <tr class="user-weekly-expenses">
+        <th class="color-swatch"></th>
+        <th class="weekly-expenses-title-th">Category</th>
+        <th>Total</th>
+      </tr>
+      <% @user.last_week_expenses_categories.each do |category| %>
+        <tr class="weekly-expenses-tr">
+          <td class="color-swatch" style="background-color:<%= category.get_color %>;"></td>
+          <td class="weekly-expenses-title-td"><%= category.title %></td>
+          <td class="weekly-expenses-amount-td"><%= number_to_currency(@user.last_week_expenses_sum_for(category.title).to_f/100) %></td>
+        </tr>
+      <% end %>
+    </table>
   <% end %>
-<% end %>
+</div>

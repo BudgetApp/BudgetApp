@@ -17,4 +17,5 @@
 //= require modernizr
 //= require placeholders.min
 //= require respond.min
+//= require Chart.min
 //= require_tree .
