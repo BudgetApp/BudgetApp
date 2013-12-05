@@ -68,21 +68,36 @@ Expense.create!([
   { :user_id => 1, :category_id => 14, :amount => 2300, :created_at => "2013-12-03 22:42:19", :updated_at => "2013-12-03 22:42:19" },
   { :user_id => 1, :category_id => 1, :amount => 19900, :created_at => "2013-12-03 23:16:25", :updated_at => "2013-12-03 23:16:25" },
   { :user_id => 1, :category_id => 12, :amount => 1276, :created_at => "2013-12-04 00:15:44", :updated_at => "2013-12-04 00:15:44" },
-  { :user_id => 1, :category_id => 6, :amount => 5500, :created_at => "2013-12-04 00:39:05", :updated_at => "2013-12-04 00:39:05" }
+  { :user_id => 1, :category_id => 6, :amount => 5500, :created_at => "2013-12-04 00:39:05", :updated_at => "2013-12-04 00:39:05" },
+  { :user_id => 3, :category_id => 5, :amount => 11200, :created_at => "2013-12-05 05:16:33", :updated_at => "2013-12-05 05:16:33" },
+  { :user_id => 3, :category_id => 2, :amount => 3422, :created_at => "2013-12-05 05:16:47", :updated_at => "2013-12-05 05:16:47" },
+  { :user_id => 3, :category_id => 3, :amount => 6500, :created_at => "2013-12-05 05:16:58", :updated_at => "2013-12-05 05:16:58" },
+  { :user_id => 3, :category_id => 8, :amount => 100000, :created_at => "2013-12-05 05:17:10", :updated_at => "2013-12-05 05:17:10" },
+  { :user_id => 3, :category_id => 9, :amount => 5800, :created_at => "2013-12-05 05:17:19", :updated_at => "2013-12-05 05:17:19" },
+  { :user_id => 3, :category_id => 11, :amount => 2300, :created_at => "2013-12-05 05:17:30", :updated_at => "2013-12-05 05:17:30" },
+  { :user_id => 3, :category_id => 10, :amount => 340000, :created_at => "2013-12-05 05:17:38", :updated_at => "2013-12-05 05:17:38" },
+  { :user_id => 3, :category_id => 13, :amount => 12000, :created_at => "2013-12-05 05:17:51", :updated_at => "2013-12-05 05:17:51" },
+  { :user_id => 3, :category_id => 12, :amount => 100, :created_at => "2013-12-05 05:18:00", :updated_at => "2013-12-05 05:18:00" },
+  { :user_id => 3, :category_id => 3, :amount => 12000, :created_at => "2013-12-05 05:18:11", :updated_at => "2013-12-05 05:18:11" },
+  { :user_id => 3, :category_id => 6, :amount => 10000, :created_at => "2013-12-05 05:18:29", :updated_at => "2013-12-05 05:18:29" },
+  { :user_id => 3, :category_id => 1, :amount => 20000, :created_at => "2013-12-05 05:18:41", :updated_at => "2013-12-05 05:18:41" }
 ])
 
 
 
 Friendship.create!([
   { :user_id => 1, :friend_id => 2, :created_at => "2013-12-02 17:19:59", :updated_at => "2013-12-02 17:19:59", :accepted => true },
-  { :user_id => 2, :friend_id => 1, :created_at => "2013-12-02 17:19:59", :updated_at => "2013-12-02 17:20:12", :accepted => true }
+  { :user_id => 2, :friend_id => 1, :created_at => "2013-12-02 17:19:59", :updated_at => "2013-12-02 17:20:12", :accepted => true },
+  { :user_id => 3, :friend_id => 2, :created_at => "2013-12-05 05:18:57", :updated_at => "2013-12-05 05:18:57", :accepted => true },
+  { :user_id => 2, :friend_id => 3, :created_at => "2013-12-05 05:18:57", :updated_at => "2013-12-05 05:19:09", :accepted => true }
 ])
 
 
 
 User.create!([
-  { :name => "Logan Hasson", :email => "lhvio89@gmail.com", :facebook_id => nil, :facebook_token => nil, :created_at => "2013-12-02 17:09:12", :updated_at => "2013-12-02 17:09:12", :remember_token => "1969666db56f3afd9356ce10bf0cae71ee0d52b6", :provider => "facebook", :uid => "1401360047", :info => {"nickname"=>"logan.hasson", "email"=>"lhvio89@gmail.com", "name"=>"Logan Hasson", "first_name"=>"Logan", "last_name"=>"Hasson", "image"=>"http://graph.facebook.com/1401360047/picture?type=square", "urls"=>{"Facebook"=>"https://www.facebook.com/logan.hasson"}, "verified"=>true}, :username => "logan.hasson", :hashed_uid => "bc130d1f2464ba232f7fee6f60b49bb3fd868678" },
-  { :name => "Amanda Himmelstoss", :email => "ahimmelstoss@gmail.com", :facebook_id => nil, :facebook_token => nil, :created_at => "2013-12-02 17:19:51", :updated_at => "2013-12-02 17:19:51", :remember_token => "1138e8a95db1014431e0ed558629d21837487a2d", :provider => "facebook", :uid => "1343310232", :info => {"nickname"=>"ahimmelstoss", "email"=>"ahimmelstoss@gmail.com", "name"=>"Amanda Himmelstoss", "first_name"=>"Amanda", "last_name"=>"Himmelstoss", "image"=>"http://graph.facebook.com/1343310232/picture?type=square", "urls"=>{"Facebook"=>"https://www.facebook.com/ahimmelstoss"}, "location"=>"Brooklyn, New York", "verified"=>true}, :username => "ahimmelstoss", :hashed_uid => "a345a2003d4e5a0e84cedb1e90bd777b30cb1b71" }
+  { :name => "Logan Hasson", :email => "lhvio89@gmail.com", :facebook_id => nil, :facebook_token => nil, :created_at => "2013-12-02 17:09:12", :updated_at => "2013-12-02 17:09:12", :remember_token => "297eb0cc55c486c018f13e1afae5dc18edabd67d", :provider => "facebook", :uid => "1401360047", :info => {"nickname"=>"logan.hasson", "email"=>"lhvio89@gmail.com", "name"=>"Logan Hasson", "first_name"=>"Logan", "last_name"=>"Hasson", "image"=>"http://graph.facebook.com/1401360047/picture?type=square", "urls"=>{"Facebook"=>"https://www.facebook.com/logan.hasson"}, "verified"=>true}, :username => "logan.hasson", :hashed_uid => "bc130d1f2464ba232f7fee6f60b49bb3fd868678" },
+  { :name => "Amanda Himmelstoss", :email => "ahimmelstoss@gmail.com", :facebook_id => nil, :facebook_token => nil, :created_at => "2013-12-02 17:19:51", :updated_at => "2013-12-05 05:16:14", :remember_token => "8fbb2047ab62b3e5690681acfb4806bc7803ff78", :provider => "facebook", :uid => "1343310232", :info => {"nickname"=>"ahimmelstoss", "email"=>"ahimmelstoss@gmail.com", "name"=>"Amanda Himmelstoss", "first_name"=>"Amanda", "last_name"=>"Himmelstoss", "image"=>"http://graph.facebook.com/1343310232/picture?type=square", "urls"=>{"Facebook"=>"https://www.facebook.com/ahimmelstoss"}, "location"=>"Brooklyn, New York", "verified"=>true}, :username => "ahimmelstoss", :hashed_uid => "a345a2003d4e5a0e84cedb1e90bd777b30cb1b71" },
+  { :name => "Alex Hioreanu", :email => "hioreanu@gmail.com", :facebook_id => nil, :facebook_token => nil, :created_at => "2013-12-05 05:16:23", :updated_at => "2013-12-05 05:16:23", :remember_token => "53e54b862c5e48e143e04fc3922ee8288871ec78", :provider => "facebook", :uid => "1536072019", :info => {"nickname"=>"hioreanu", "email"=>"hioreanu@gmail.com", "name"=>"Alex Hioreanu", "first_name"=>"Alex", "last_name"=>"Hioreanu", "image"=>"http://graph.facebook.com/1536072019/picture?type=square", "urls"=>{"Facebook"=>"https://www.facebook.com/hioreanu"}, "location"=>"Brooklyn, New York", "verified"=>true}, :username => "hioreanu", :hashed_uid => "02b876f6172c5a1b341b24e0427abcc51a502481" }
 ])
 
 

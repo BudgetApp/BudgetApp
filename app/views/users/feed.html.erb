@@ -28,9 +28,9 @@
   <% end %>
   <% @user.pending_friendship_requests.each do |request| %>
     <%= request.friend.name %>
-    <%= form_tag('/accept-friendship', method: :post) do %>
+    <%= form_tag('/accept-friendship', method: :post, class: "accept-form") do %>
       <%= hidden_field_tag 'friendship[id]', request.id %>
-      <%= submit_tag "accept" %>
+      <%= submit_tag "Accept", class: "btn btn-lg btn-info" %>
     <% end %>
   <% end %>
 
